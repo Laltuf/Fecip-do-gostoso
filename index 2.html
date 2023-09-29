@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+<head>
+  
+</head>
+<body>
+    <h1>Calculadora de Gastos</h1>
+
+    <!--para o salário -->
+    <label for="salario">Informe o salário:</label>
+    <input type="number" id="salario" placeholder="Digite o salário" />
+
+    <br>
+
+    <!--para os gastos -->
+    <label for="gastos">Informe os gastos mensais:</label>
+    <input type="number" id="gastos" placeholder="Digite os gastos" />
+
+    <!-- Botão para calcular -->
+    <button onclick="calcularGastos()">Calcular</button>
+
+    <!-- vendo o resultado entendeu -->
+    <p id="resultado"></p>
+
+    <script>
+function calcularGastos() {
+            // Obtenha os valores dos campos de entrada
+            var salario = parseFloat(document.getElementById("salario").value);
+            var gastos = parseFloat(document.getElementById("gastos").value);
+
+            // Verifique se os valores são válidos
+            if (isNaN(salario) || isNaN(gastos)) {
+                document.getElementById("resultado").innerText = "Por favor, insira valores válidos.";
+            } else {
+                // Calcule o resultado
+                var economia = salario - gastos;
+
+                // frase com base no resultado
+                if (economia > 0) {
+                    document.getElementById("resultado").innerText = "Você está economizando $" + economia.toFixed(2) + " por mês.";
+                } else if (economia === 0) {
+                    document.getElementById("resultado").innerText = "Você está gastando exatamente o que ganha.";
+                } else {
+                    document.getElementById("resultado").innerText = "Você está gastando mais do que ganha. Considere reduzir seus gastos.";
+                }
+            }
+         }
+    </script>
+
+
+
+
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    display: ruby-base;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+p#resultado {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+</style>
+</body>
+</html>
+</body>
+</html>
