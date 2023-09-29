@@ -8,9 +8,10 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #47054d94;
             margin: 0;
             padding: 0;
+            position: relative;
         }
 
         h1 {
@@ -21,26 +22,30 @@
         label {
             display: block;
             margin-bottom: 5px;
-            color: #555;
+            color: #000000;
+            font-size: 18px;
+            text-align: center;
         }
 
         input[type="number"] {
-            width: 100%;
+            width: 40%;
             padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
+            border: 1px solid #47033c;
             border-radius: 4px;
+            display: block;
+            margin: 15px auto;
         }
 
         button {
             display: block;
-            width: 100%;
+            width: 80%;
             padding: 10px;
             background-color: #333;
             color: #fff;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            margin: 15px auto;
         }
 
         button:hover {
@@ -51,7 +56,7 @@
             margin-top: 15px;
             text-align: center;
             font-weight: bold;
-            color: #333;
+            color: #020202;
             padding: 10px;
             border: 1px solid #ccc;
         }
@@ -75,34 +80,56 @@
         a:hover {
             text-decoration: underline;
         }
-    #listaLivros {
+    ul#listaLivros {
         margin-top: 20px;
+        padding: 0;
+         display: flex; 
+         flex-wrap: wrap;  
+         justify-content: space-around; 
+         display: none; 
     }
 
     #listaLivros li {
+        width: 45%;
         margin-bottom: 10px;
         list-style-type: none;
     }
 
     #listaLivros a {
         text-decoration: none;
-        color: #d80909; 
+        color: #020202; 
         font-weight: bold;
         display: block;
         padding: 10px;
-        background-color: #f4f4f4;
+        background-color: #5a166ba9;
         border: 1px solid #ccc;
         border-radius: 4px;
         transition: background-color 0.3s ease;
     }
 
-    #listaLivros a:hover {
-        background-color: #ddd;
-    }
+    #btnVoltar {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 65px;
+        }
+
+        #btnVoltar:hover {
+            background-color: #555;
+        }
+    
     </style>
 </head>
 
 <body>
+    
     <h1>Calculadora de Gastos</h1>
 
     <!-- para o salário -->
@@ -123,12 +150,21 @@
 
     <!-- Lista de livros -->
     <ul id="listaLivros">
-        <li><a href="https://www.amazon.com.br/segredos-mente-milionária-Harv-Eker/dp/8575422391/ref=sr_1_1?__mk_pt_BR=ÅMÅŽÕÑ&crid=13IH92NXZ8O3Y&keywords=mente+milionaria&qid=1696010724&sprefix=mente+milionaria%2Caps%2C232&sr=8-1" target="_blank">Mente Milionaria</a></li>
-        <li><a href="https://www.amazon.com.br/Pai-rico-pai-pobre-anos/dp/8550801488/ref=sr_1_1?crid=1JIM4HLP1QFRC&keywords=pai+rico+pai+pobre&qid=1696011609&sprefix=pai+rico+%2Caps%2C299&sr=8-1" target="_blank">Pai rico Pai pobre</a></li>
-        <li><a href="https://www.amazon.com.br/Investidor-Inteligente-Benjamin-Graham/dp/8595080801/ref=sr_1_1_sspa?__mk_pt_BR=ÅMÅŽÕÑ&crid=2R9KK5NWHQT0H&keywords=livro+de+investimento&qid=169601" target="_blank">O Investidor Inteligente</a></li>
-        <li><a href="https://www.amazon.com.br/Mil-Milhão-Sem-Cortar-Cafezinho/dp/8595083274/ref=sr_1_6?__mk_pt_BR=ÅMÅŽÕÑ&crid=IVPP4F28CZUJ&keywords=livro+de+investimento&qid=1696011873&sprefix=livro+de+investimento%2Caps%2C237&sr=8-6" target="_blank">Do Mil ao Milhão. Sem Cortar o Cafezinho.</a></li>
-        <li><a href="https://www.amazon.com.br/Faça-Fortuna-Ações-Antes-Tarde/dp/8585454164/ref=sr_1_17?__mk_pt_BR=ÅMÅŽÕÑ&crid=IVPP4F28CZUJ&keywords=livro+de+investimento&qid=1696012005&sprefix=livro+de+investimento%2Caps%2C237&sr=8-17" target="_blank">Faça Fortuna com Ações, Antes que seja Tarde</a></li>
+        <li><a href="https://www.amazon.com.br/segredos-mente-milionária-Harv-Eker/dp/8575422391/ref=sr_1_1?__mk_pt_BR=ÅMÅŽÕÑ&crid=13IH92NXZ8O3Y&keywords=mente+milionaria&qid=1696010724&sprefix=mente+milionaria%2Caps%2C232&sr=8-1" target="_blank">Mente Milionaria - T. Harv Eker</a></li>
+        <li><a href="https://www.amazon.com.br/Pai-rico-pai-pobre-anos/dp/8550801488/ref=sr_1_1?crid=1JIM4HLP1QFRC&keywords=pai+rico+pai+pobre&qid=1696011609&sprefix=pai+rico+%2Caps%2C299&sr=8-1" target="_blank">Pai rico Pai pobre - Robert T.Kiyosaki</a></li>
+        <li><a href="https://www.amazon.com.br/Investidor-Inteligente-Benjamin-Graham/dp/8595080801/ref=sr_1_1_sspa?__mk_pt_BR=ÅMÅŽÕÑ&crid=2R9KK5NWHQT0H&keywords=livro+de+investimento&qid=169601" target="_blank">O Investidor Inteligente - Benjamin Graham</a></li>
+        <li><a href="https://www.amazon.com.br/Mil-Milhão-Sem-Cortar-Cafezinho/dp/8595083274/ref=sr_1_6?__mk_pt_BR=ÅMÅŽÕÑ&crid=IVPP4F28CZUJ&keywords=livro+de+investimento&qid=1696011873&sprefix=livro+de+investimento%2Caps%2C237&sr=8-6" target="_blank">Do Mil ao Milhão. Sem Cortar o Cafezinho - Thiago Nigro</a></li>
+        <li><a href="https://www.amazon.com.br/Faça-Fortuna-Ações-Antes-Tarde/dp/8585454164/ref=sr_1_17?__mk_pt_BR=ÅMÅŽÕÑ&crid=IVPP4F28CZUJ&keywords=livro+de+investimento&qid=1696012005&sprefix=livro+de+investimento%2Caps%2C237&sr=8-17" target="_blank">Faça Fortuna com Ações, Antes que seja Tarde - Décio Bazin</a></li>
+        <li><a href="https://www.amazon.com.br/homem-mais-rico-Babilônia-prefácio/dp/6555111542/ref=sr_1_1_sspa?crid=N9GLCGYKARLX&keywords=o+homem+mais+rico+da+babilonia&qid=1696013633&sprefix=o+homem%2Caps%2C301&sr=8-1-spons&sp_csd=d2" target="_blank">O Homem Mais Rico da Babilônia - George S. Clason</a></li>
+        <li><a href="https://www.amazon.com.br/Ações-Comuns-Lucros-Extraordinários-Edição/dp/6558100126/ref=sr_1_1?crid=2C6TUB8FY7PNU&keywords=açoes+comuns+lucros+extraordinarios&qid=1696013670&sprefix=açoes+%2Caps%2C358&sr=8-1" target="_blank">Ações Comuns, Lucros Extraordinários - Philip Fisher</a></li>
+        <li><a href="https://www.amazon.com.br/milionário-mora-lado-surpreendentes-segredos/dp/8550817538/ref=sr_1_1?crid=GCZKKUPNGLE&keywords=o+milionário+mora+ao+lado&qid=1696013775&sprefix=o+milio%2Caps%2C228&sr=8-1" target="_blank">O Milionário Mora ao Lado - Thomas J. Stanley e William D. Danko</a></li>
+        <li><a href="https://www.amazon.com.br/Livro-Negro-do-Capitalismo/dp/8501056561/ref=sr_1_1?crid=2IZPVTRAI74EE&keywords=o+livro+negro+do+capitalismo&qid=1696013902&sprefix=o+livro+negro%2Caps%2C240&sr=8-1" target="_blank">O Livro Negro do Capitalismo - Robert Kiyosaki</a></li>
+        <li><a href="https://www.amazon.com.br/jeito-Warren-Buffett-investir-investidor/dp/8557173067/ref=sr_1_1?crid=3N3291IO6HBE6&keywords=o+jeito+warren+buffett+de+investir&qid=1696013979&sprefix=o+jeito+%2Ca" target="_blank">O Jeito Warren Buffett de Investir - Robert G. Hagstrom</a></li>
+
+
     </ul>
+
+    <button id="btnVoltar" onclick="voltarParaPaginaInicial()">Volta</button>
 
     <script>
         function calcularGastos() {
@@ -154,8 +190,16 @@
                 }
 
                 // Exiba a lista de livros
-                document.getElementById("listaLivros").style.display = "block";
-            }
+                var listaLivros = document.getElementById("listaLivros");
+            listaLivros.style.display = "flex";
+            listaLivros.style.flexWrap = "wrap";
+            listaLivros.style.justifyContent = "space-around";
+            }    
+            
+        }
+        function voltarParaPaginaInicial() {
+            
+            window.location.href = "index.html";
         }
     </script>
 </body>
