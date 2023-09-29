@@ -3,24 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora de Gastos</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        p#resultado {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: none;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0077cc;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    #listaLivros {
+        margin-top: 20px;
+    }
+
+    #listaLivros li {
+        margin-bottom: 10px;
+        list-style-type: none;
+    }
+
+    #listaLivros a {
+        text-decoration: none;
+        color: #d80909; 
+        font-weight: bold;
+        display: block;
+        padding: 10px;
+        background-color: #f4f4f4;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    #listaLivros a:hover {
+        background-color: #ddd;
+    }
+    </style>
 </head>
-<body>
-    <!DOCTYPE html>
-<html>
-<head>
-  
-</head>
+
 <body>
     <h1>Calculadora de Gastos</h1>
 
-    <!--para o salário -->
+    <!-- para o salário -->
     <label for="salario">Informe o salário:</label>
     <input type="number" id="salario" placeholder="Digite o salário" />
 
     <br>
 
-    <!--para os gastos -->
+    <!-- para os gastos -->
     <label for="gastos">Informe os gastos mensais:</label>
     <input type="number" id="gastos" placeholder="Digite os gastos" />
 
@@ -30,8 +121,17 @@
     <!-- vendo o resultado entendeu -->
     <p id="resultado"></p>
 
+    <!-- Lista de livros -->
+    <ul id="listaLivros">
+        <li><a href="https://www.amazon.com.br/segredos-mente-milionária-Harv-Eker/dp/8575422391/ref=sr_1_1?__mk_pt_BR=ÅMÅŽÕÑ&crid=13IH92NXZ8O3Y&keywords=mente+milionaria&qid=1696010724&sprefix=mente+milionaria%2Caps%2C232&sr=8-1" target="_blank">Mente Milionaria</a></li>
+        <li><a href="https://www.amazon.com.br/Pai-rico-pai-pobre-anos/dp/8550801488/ref=sr_1_1?crid=1JIM4HLP1QFRC&keywords=pai+rico+pai+pobre&qid=1696011609&sprefix=pai+rico+%2Caps%2C299&sr=8-1" target="_blank">Pai rico Pai pobre</a></li>
+        <li><a href="https://www.amazon.com.br/Investidor-Inteligente-Benjamin-Graham/dp/8595080801/ref=sr_1_1_sspa?__mk_pt_BR=ÅMÅŽÕÑ&crid=2R9KK5NWHQT0H&keywords=livro+de+investimento&qid=169601" target="_blank">O Investidor Inteligente</a></li>
+        <li><a href="https://www.amazon.com.br/Mil-Milhão-Sem-Cortar-Cafezinho/dp/8595083274/ref=sr_1_6?__mk_pt_BR=ÅMÅŽÕÑ&crid=IVPP4F28CZUJ&keywords=livro+de+investimento&qid=1696011873&sprefix=livro+de+investimento%2Caps%2C237&sr=8-6" target="_blank">Do Mil ao Milhão. Sem Cortar o Cafezinho.</a></li>
+        <li><a href="https://www.amazon.com.br/Faça-Fortuna-Ações-Antes-Tarde/dp/8585454164/ref=sr_1_17?__mk_pt_BR=ÅMÅŽÕÑ&crid=IVPP4F28CZUJ&keywords=livro+de+investimento&qid=1696012005&sprefix=livro+de+investimento%2Caps%2C237&sr=8-17" target="_blank">Faça Fortuna com Ações, Antes que seja Tarde</a></li>
+    </ul>
+
     <script>
-function calcularGastos() {
+        function calcularGastos() {
             // Obtenha os valores dos campos de entrada
             var salario = parseFloat(document.getElementById("salario").value);
             var gastos = parseFloat(document.getElementById("gastos").value);
@@ -44,70 +144,19 @@ function calcularGastos() {
                 var economia = salario - gastos;
 
                 // frase com base no resultado
+                var resultadoElemento = document.getElementById("resultado");
                 if (economia > 0) {
-                    document.getElementById("resultado").innerText = "Você está economizando $" + economia.toFixed(2) + " por mês.";
+                    resultadoElemento.innerText = "Você está economizando $" + economia.toFixed(2) + " por mês. Mas caso queira melhorar seu qi financeiro: ";
                 } else if (economia === 0) {
-                    document.getElementById("resultado").innerText = "Você está gastando exatamente o que ganha.";
+                    resultadoElemento.innerText = "Você está gastando exatamente o que ganha. Caso queira melhorar seu qi financeiro:";
                 } else {
-                    document.getElementById("resultado").innerText = "Você está gastando mais do que ganha. Considere reduzir seus gastos.";
+                    resultadoElemento.innerText = "Você está gastando mais do que ganha. Considere isto para melhorar seu qi financeiro: ";
                 }
+
+                // Exiba a lista de livros
+                document.getElementById("listaLivros").style.display = "block";
             }
-         }
+        }
     </script>
-
-
-
-
-
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-}
-
-label {
-    display: ruby-base;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #555;
-}
-
-p#resultado {
-    margin-top: 15px;
-    text-align: center;
-    font-weight: bold;
-}
-</style>
-</body>
-</html>
 </body>
 </html>
