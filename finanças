@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Gastos</title>
+
+    <style>
+        body {
+            font-family: 'Montserrat','Raleway','Helvetica','Arial',sans-serif;
+            background-color: #242424ee;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+       span {
+      
+       color: #d64eff;
+       }
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            font-size: 450%;
+            margin-top: 5%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ffffff;
+            font-size: 250%;
+            text-align: center;
+        }
+
+        input[type="number"] {
+            width: 60%;
+            padding: 20px;
+            font-size: 10px;
+            border: 2px solid #47033c;
+            border-radius: 4px;
+            display: block;
+            margin: 2px auto;
+            margin-top: 3%;
+        }
+
+        button {
+            display: block;
+            width: 60%;
+            padding: 10px;
+            font-size: 18px;
+            background-color: #333;
+            color: #d64eff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 15px auto;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        p#resultado {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: #ffffff;
+            padding: 10px;
+            border: 1px  #ccc;
+            font-size: 25px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: none;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0077cc;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .calc
+        {
+            width: 950px;
+            height: 500px;
+            background-color: #00000049;
+            margin-left: 24%;
+            border-radius: 20px;
+            box-shadow: 0px 3px 10px rgb(0, 0, 0);
+        }
+    
+    #btnVoltar {
+        width: 100px;
+    font-family: 'Montserrat','Raleway','Helvetica','Arial',sans-serif;  
+    background-color: #660679; 
+    color: #fff; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s ease; 
+    text-decoration: none;
+    position: absolute;
+    top: 0.5%;
+    left: 90%;
+    transform: translate(-50%, 20%); 
+
+        }
+
+        #novoBotao {
+    display: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 101%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+}
+
+#novoBotao:hover {
+    background-color: #45a049;
+}
+    
+    </style>
+</head>
+
+<body>
+    
+    <h1><span>Calculadora</span> de Gastos</h1>
+
+<div class="calc"> <!-- para o salário -->
+
+    <label for="salario">Informe o <span>salário:</span></label>
+    <input type="number" id="salario" placeholder="Digite o salário" />
+
+    <br>
+
+    <!-- para os gastos -->
+    <label for="gastos">Informe os <span>gastos</span> mensais:</label>
+    <input type="number" id="gastos" placeholder="Digite os gastos" />
+
+    <!-- Botão para calcular -->
+    <button onclick="calcularGastos()">Calcular</button>
+
+    <!-- vendo o resultado entendeu -->
+    <p id="resultado"></p>
+
+    <a id="novoBotao"  href="#" style="display: none;" onclick="acaoDoNovoBotao()">Avançar</a>
+    
+
+</div>  
+    
+
+    <button id="btnVoltar" onclick="voltarParaPaginaInicial()">Voltar</button>
+
+    <script>
+        function calcularGastos() {
+            // Obtenha os valores dos campos de entrada
+            var salario = parseFloat(document.getElementById("salario").value);
+            var gastos = parseFloat(document.getElementById("gastos").value);
+
+            // Verifique se os valores são válidos
+            if (isNaN(salario) || isNaN(gastos)) {
+                document.getElementById("resultado").innerText = "Por favor, insira valores válidos.";
+            } else {
+                // Calcule o resultado
+                var economia = salario - gastos;
+
+                // frase com base no resultado
+                var resultadoElemento = document.getElementById("resultado");
+                if (economia > 0) {
+                    resultadoElemento.innerText = "Você está economizando R$" + economia.toFixed(2) + " por mês. Está em boas condições, mas melhorar nunca é demais. ";
+                    document.getElementById("novoBotao").style.display = "inline";
+                    
+                    
+                } else if (economia === 0) {
+                    resultadoElemento.innerText = "Você está gastando exatamente o que ganha. Procure alguma outra fonte de renda, como empreender, ou corte alguns gastos.";
+                    document.getElementById("novoBotao").style.display = "inline";
+                } else {
+                    resultadoElemento.innerText = "Você está gastando mais do que ganha. Veja mais uma fonte de renda urgentemente e aprenda como melhorar isso com empreendedores de sucesso, como Flávio Augusto";
+                    document.getElementById("novoBotao").style.display = "inline";
+                }
+
+                
+            }    
+            
+        }
+        function voltarParaPaginaInicial() {
+            window.location.href = "escolha.html";
+        }
+
+        function acaoDoNovoBotao() {
+    window.location.href = "ajudas.html"
+}
+    </script>
+</body>
+</html>
